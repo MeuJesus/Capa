@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://s.codepen.io/boomerang/33e62cb5e925e20ec2cecf6f9d9dd8381477165960783/index.html -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./editandp capa_files/events_runner-21174b4c7273cfddc124acb0876792e0.js.download"></script><script src="./editandp capa_files/css_live_reload_init-7618a0de08795409d8f6c9ef6805f7b2.js.download"></script><meta name="robots" content="noindex">
+ <link href='https://raw.githubusercontent.com/PortalUnidecristo/Editora/gh-pages/image.ico' rel='icon' type='image/png'>
+<link href='https://raw.githubusercontent.com/PortalUnidecristo/Editora/gh-pages/image.ico' rel='shortcut icon' type='image/png'>
+<link rel="stylesheet prefetch" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.clear_both {
+  display: block;
+  clear: both;
+}
+
+
+/START image dialog/
+
+.ui-wrapper {
+  display: inline-block;
+}
+
+#content img {
+  display: inline-block !important;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image {
+  font-size: 12pt;
+  background: white;
+  box-shadow: 1px 1px 3px 1px gray;
+  width: 300px;
+  padding: 10px;
+  display: none;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info,
+.dialog-handler {
+  padding: 5px;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info {
+  padding: 20px 10px;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info label {
+  float: left;
+  width: 15%;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info input {
+  color: gray;
+  width: 85%;
+  float: right;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler {
+  background: #e1e1e1;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler p {
+  float: right;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler p a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: black;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler p a:hover {
+  text-decoration: underline;
+}
+/image edit as link dialog box/
+
+#wysiwyg-editor-wrapper #image_link_dialog {
+  background: white;
+  padding: 5px;
+  position: absolute;
+  box-shadow: 1px 1px 4px 0px gray;
+  display: none;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog div {
+  padding: 5px;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog #label {
+  float: left;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog #input {
+  float: right;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog label,
+input {
+  display: block;
+  font-size: 12pt;
+  margin-bottom: 5px;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog
+input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog .dialog-handler {
+  background: lightgray;
+  cursor: move;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog .dialog-handler a {
+  background: lightgray;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+}</style>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+body {
+  font-family: "Lato", Helvetica, Arial;
+  font-size: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+*, *:before, *:after {
+  -webkit-border-sizing: border-box;
+  -moz-border-sizing: border-box;
+  border-sizing: border-box;
+}
+
+.container {
+  width: 350px;
+  margin: 50px auto;
+}
+.container > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.title {
+  font-family: 'Pacifico';
+  font-weight: norma;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.4;
+  color: #2980B9;
+}
+
+.dropdown a {
+  text-decoration: none;
+}
+.dropdown [data-toggle="dropdown"] {
+  position: relative;
+  display: block;
+  color: white;
+  background: #2980B9;
+  -moz-box-shadow: 0 1px 0 #409ad5 inset, 0 -1px 0 #20638f inset;
+  -webkit-box-shadow: 0 1px 0 #409ad5 inset, 0 -1px 0 #20638f inset;
+  box-shadow: 0 1px 0 #409ad5 inset, 0 -1px 0 #20638f inset;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+.dropdown [data-toggle="dropdown"]:hover {
+  background: #2c89c6;
+}
+.dropdown .icon-arrow {
+  position: absolute;
+  display: block;
+  font-size: 0.7em;
+  color: #fff;
+  top: 14px;
+  right: 10px;
+}
+.dropdown .icon-arrow.open {
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  -moz-transition: -moz-transform 0.6s;
+  -o-transition: -o-transform 0.6s;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+}
+.dropdown .icon-arrow.close {
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -moz-transition: -moz-transform 0.6s;
+  -o-transition: -o-transform 0.6s;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+}
+.dropdown .icon-arrow:before {
+  content: '\25BC';
+}
+.dropdown .dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdown .dropdown-menu li {
+  padding: 0;
+}
+.dropdown .dropdown-menu li a {
+  display: block;
+  color: #6f6f6f;
+  background: #EEE;
+  -moz-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
+  -webkit-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
+  box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3);
+  padding: 10px 10px;
+}
+.dropdown .dropdown-menu li a:hover {
+  background: #f6f6f6;
+}
+.dropdown .show, .dropdown .hide {
+  -moz-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+.dropdown .show {
+  display: block;
+  max-height: 9999px;
+  -moz-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  animation: showAnimation 0.5s ease-in-out;
+  -moz-animation: showAnimation 0.5s ease-in-out;
+  -webkit-animation: showAnimation 0.5s ease-in-out;
+  -moz-transition: max-height 1s ease-in-out;
+  -o-transition: max-height 1s ease-in-out;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
+}
+.dropdown .hide {
+  max-height: 0;
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  animation: hideAnimation 0.4s ease-out;
+  -moz-animation: hideAnimation 0.4s ease-out;
+  -webkit-animation: hideAnimation 0.4s ease-out;
+  -moz-transition: max-height 0.6s ease-out;
+  -o-transition: max-height 0.6s ease-out;
+  -webkit-transition: max-height 0.6s ease-out;
+  transition: max-height 0.6s ease-out;
+}
+
+@keyframes showAnimation {
+  0% {
+    -moz-transform: scaleY(0.1);
+    -ms-transform: scaleY(0.1);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+  }
+  40% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  100% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-moz-keyframes showAnimation {
+  0% {
+    -moz-transform: scaleY(0.1);
+    -ms-transform: scaleY(0.1);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+  }
+  40% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  100% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes showAnimation {
+  0% {
+    -moz-transform: scaleY(0.1);
+    -ms-transform: scaleY(0.1);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+  }
+  40% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  100% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes hideAnimation {
+  0% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+@-moz-keyframes hideAnimation {
+  0% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+@-webkit-keyframes hideAnimation {
+  0% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+<title>Editando capa de livro</title>
+<base target="I1">
+</head><body bgcolor="#666699">
+<div align="center">
+  <center>
+  <table border="1" cellpadding="0" cellspacing="0" style="border-color:#808080; border-collapse: collapse; padding-left:4; padding-right:4; padding-top:1; padding-bottom:1" bordercolor="#111111" width="707" height="750">
+    <tr>
+      <td width="703" height=750" align="center" style="border-style:dotted; border-width:1; padding-left:1; padding-right:1">
+      
+ <div id="content" contenteditable="true" style="width: 710px; height: 80px">
+    
+
+ <iframe name="I3" width="700" height="70" scrolling="no" align="top" border="0" frameborder="0" src="https://lh3.googleusercontent.com/-R51KNFT27mY/YJ1kuII7FBI/AAAAAAAAJvg/n7bLQcxwIWIUdEmUStRYlCJnIdePG5TTACLcBGAsYHQ/s450/121.png">
+		</iframe>
+	</div>
+	
+				
+<div id="content" contenteditable="true" style="width: 679px; height: 252px">
+    
+    <p align="center">
+	<font color="#AF7B2F" face="Viner Hand ITC" size="7"><strong>
+		Nome do escritor</strong></font><p align="center">
+	<img src="https://raw.githubusercontent.com/EditoraFacil/SeuLivro/gh-pages/images/Titulo%20do%20livro.png"  style="cursor: move;" width="434" height="78"><p align="center">
+	&nbsp;<p align="center"><b>
+	<font size="6" color="#AF7B2F">Subtítulo</font></b><p align="center">
+	
+	       <iframe src="https://editorafacil.github.io/SeuLivro/images/93.png" width="600" height="500" name="I1" border="0" frameborder="0" scrolling="no" align="middle"></iframe></h1><p align="center">
+	&nbsp;<p align="center">
+
+	
+	</div>
+		<p>
+       </div>
+       <br>&nbsp;</p>
+	<div align="center">
+         <center>
+         <p>&nbsp;</p>
+			<table border="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111" width="580" height="635">
+           <tr>
+             <td width="100%" height="650" align="center" valign="top">
+             <p align="center">
+             <div id="content" contenteditable="true" style="width: 692px; height: 737px">
+    
+       <h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		<iframe name="I2" width="621" height="100" border="0" frameborder="0" scrolling="no">
+				</iframe></div>
+</td>
+           </tr>
+         </table>
+         </center>
+</div>
+		<button type="button" onclick="Mudarestado('minhaDiv')">Mostrar / 
+		Esconder</button><div id="minhaDiv">
+		
+		
+		<hr color="#FFFF00" size="4">
+<p>&nbsp;</p>
+	<p align="left">&nbsp;</p><font size="5">Editar a capa abaixo</font><p align="left">&nbsp;</p>
+	<p>Fontes para trocar o nomes: <b><font size="5">
+	<a title="Ideal para o nome do escritor e subtítulo" target="I4" href="https://www.fontspace.com/new/fonts">
+	OPÇÃO 1</a> -
+	<a title="Ideal para o título" target="I4" href="https://pt.cooltext.com/">
+	OPÇÃO 2</a></font></b></p>
+		&nbsp;<p><font size="5">Mudanças automaticas</font></p>
+		<p>&nbsp;</p>
+		<p><b>Cor da Capa</b></p> <p>
+    
+    <SELECT 
+onchange=document.bgColor=this.options[this.selectedIndex].value size=3 
+name=cores>
+				<OPTION value=orange selected>Laranja
+				<OPTION 
+  value=chocolate>Chocolate
+				<OPTION value=darkred>Vermelho escuro
+				<OPTION 
+  value=gold>Dourado 1
+				<OPTION value=vermelho>Dourado 2
+				<OPTION 
+  value=#dbdb7b>Dourado 3
+				<OPTION value=darkgoldenrod>Dourado escuro
+				<OPTION 
+  value=silver>Prateado
+				<OPTION value=buey>Verde 1
+				<OPTION value=rubi>Verde 2
+				<OPTION value=lime>Verde 3
+				<OPTION value=springgreen>Verde 4
+				<OPTION 
+  value=hotpink>Rosa choque
+				<OPTION value=deeppink>Rosa
+				<OPTION 
+  value=darkkhaki>Bege
+				<OPTION value="cadetblue ">Roxo 1
+				<OPTION value=apple>Roxo 2
+				<OPTION value=purple>Roxo 3
+				<OPTION value=darkslateblue>Azul escuro
+				<OPTION 
+  value=aquamarine>Azul marinho
+				<OPTION value=turquoise>Azul turquesa
+				<OPTION 
+  value=potatoe>Azul claro
+				<OPTION value=#135790>Azul esverdeado
+				<OPTION 
+  value=tomato>Tomate
+				<OPTION value="#964b00">Marron</option>
+				<option value="black">Preto</option>
+				<OPTION value="white">Branco</OPTION>
+				</SELECT>&nbsp;&nbsp;<p>
+    
+    &nbsp;<p>
+    
+    Mudar Imagens<table border="1" width="59%">
+			<tr>
+				<td align="center">
+				<a target="I4" href="http://capa.arquivocristao.com.br/imagemcentro.htm">
+				<font size="5">Centro</font></a></td>
+				<td align="center">
+				<a href="https://editorafacil.github.io/SeuLivro/images/121.png">
+				<font size="5">Excluir</font></a></td>
+			</tr>
+			<tr>
+				<td align="center">
+				<a target="I4" href="http://capa.arquivocristao.com.br/imagemtopo.htm">
+				<font size="5">Topo</font></a></td>
+				<td align="center">
+				<a target="I3" href="https://editorafacil.github.io/SeuLivro/images/121.png">
+				<font size="5">Excluir</font></a></td>
+			</tr>
+			<tr>
+				<td align="center">
+				<a target="I4" href="http://capa.arquivocristao.com.br/imagemrodape.htm">
+				<font size="5">Roda-pé</font></a></td>
+				<td align="center">
+				<a target="I2" href="https://editorafacil.github.io/SeuLivro/images/121.png">
+				<font size="5">Excluir</font></a></td>
+			</tr>
+		</table>
+		<p>&nbsp;</p>
+		<p style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(0, 0, 0); font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: -webkit-center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(102, 102, 153); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+		Imagens dimensionadas para a capa na totalidade:</p>
+		<p style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(0, 0, 0); font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: -webkit-center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(102, 102, 153); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+		Clique no link e copie para colar no topo do gerador.</p>
+		<p style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, sans-serif; color: rgb(0, 0, 0); font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: -webkit-center; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(102, 102, 153); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">
+		<a target="I4" style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, sans-serif;" href="http://editora.arquivocristao.com.br/imagens_maiores.htm">
+		<b style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, sans-serif;">
+		<font size="7" style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, sans-serif;">
+		&nbsp;Aqui</font></b><img src="https://lh3.googleusercontent.com/-hqdAh0JMhxk/YJlDsi8UZAI/AAAAAAAAJuM/KvzusgGgZcI80EGcvGjEgdWTUi3fX5axwCLcBGAsYHQ/image.png" width="81" height="73"></a></p>
+		<p>&nbsp;</p>
+		<p>
+    
+    &nbsp;<iframe name="I4" width="700" height="1000" src="http://capa.arquivocristao.com.br/inicio_gerador.htm" target="I1" border="0" frameborder="0"></iframe>&nbsp;<script type="text/javascript">
+        function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+        if(display == "none")
+            document.getElementById(el).style.display = 'block';
+        else
+            document.getElementById(el).style.display = 'none';
+    }
+    </script>
+</body>
+</html>

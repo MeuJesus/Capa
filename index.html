@@ -1,5 +1,693 @@
-<script>
-<!--
-document.write(unescape("%3C%21DOCTYPE%20html%3E%0A%0A%3Chtml%20class%3D%22%22%3E%3Chead%3E%3Cmeta%20http-equiv%3D%22Content-Type%22%20content%3D%22text/html%3B%20charset%3DUTF-8%22%3E%3Cscript%20src%3D%22./editandp%20capa_files/events_runner-21174b4c7273cfddc124acb0876792e0.js.download%22%3E%3C/script%3E%3Cscript%20src%3D%22./editandp%20capa_files/css_live_reload_init-7618a0de08795409d8f6c9ef6805f7b2.js.download%22%3E%3C/script%3E%3Cmeta%20name%3D%22robots%22%20content%3D%22noindex%22%3E%0A%20%3Clink%20href%3D%27https%3A//raw.githubusercontent.com/PortalUnidecristo/Editora/gh-pages/image.ico%27%20rel%3D%27icon%27%20type%3D%27image/png%27%3E%0A%3Clink%20href%3D%27https%3A//raw.githubusercontent.com/PortalUnidecristo/Editora/gh-pages/image.ico%27%20rel%3D%27shortcut%20icon%27%20type%3D%27image/png%27%3E%0A%0A%3Cstyle%20class%3D%22cp-pen-styles%22%3E@import%20url%28https%3A//fonts.googleapis.com/css%3Ffamily%3DOpen+Sans%29%3B%0A*%20%7B%0A%20%20margin%3A%200%3B%0A%20%20padding%3A%200%3B%0A%20%20font-family%3A%20%27Open%20Sans%27%2C%20sans-serif%3B%0A%7D%0A%0A.clear_both%20%7B%0A%20%20display%3A%20block%3B%0A%20%20clear%3A%20both%3B%0A%7D%0A%0A%0A/START%20image%20dialog/%0A%0A.ui-wrapper%20%7B%0A%20%20display%3A%20inline-block%3B%0A%7D%0A%0A%23content%20img%20%7B%0A%20%20display%3A%20inline-block%20%21important%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20%7B%0A%20%20font-size%3A%2012pt%3B%0A%20%20background%3A%20white%3B%0A%20%20box-shadow%3A%201px%201px%203px%201px%20gray%3B%0A%20%20width%3A%20300px%3B%0A%20%20padding%3A%2010px%3B%0A%20%20display%3A%20none%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20%23info%2C%0A.dialog-handler%20%7B%0A%20%20padding%3A%205px%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20%23info%20%7B%0A%20%20padding%3A%2020px%2010px%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20%23info%20label%20%7B%0A%20%20float%3A%20left%3B%0A%20%20width%3A%2015%25%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20%23info%20input%20%7B%0A%20%20color%3A%20gray%3B%0A%20%20width%3A%2085%25%3B%0A%20%20float%3A%20right%3B%0A%20%20outline%3A%20none%3B%0A%20%20border%3A%20none%3B%0A%20%20border-bottom%3A%201px%20solid%20lightgray%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20.dialog-handler%20%7B%0A%20%20background%3A%20%23e1e1e1%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20.dialog-handler%20p%20%7B%0A%20%20float%3A%20right%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20.dialog-handler%20p%20a%20%7B%0A%20%20margin%3A%200%2015px%3B%0A%20%20text-decoration%3A%20none%3B%0A%20%20color%3A%20black%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20.wysiwyg-editor-dialog-image%20.dialog-handler%20p%20a%3Ahover%20%7B%0A%20%20text-decoration%3A%20underline%3B%0A%7D%0A/image%20edit%20as%20link%20dialog%20box/%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%20%7B%0A%20%20background%3A%20white%3B%0A%20%20padding%3A%205px%3B%0A%20%20position%3A%20absolute%3B%0A%20%20box-shadow%3A%201px%201px%204px%200px%20gray%3B%0A%20%20display%3A%20none%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%20div%20%7B%0A%20%20padding%3A%205px%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%20%23label%20%7B%0A%20%20float%3A%20left%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%20%23input%20%7B%0A%20%20float%3A%20right%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%20label%2C%0Ainput%20%7B%0A%20%20display%3A%20block%3B%0A%20%20font-size%3A%2012pt%3B%0A%20%20margin-bottom%3A%205px%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%0Ainput%20%7B%0A%20%20outline%3A%20none%3B%0A%20%20border%3A%20none%3B%0A%20%20border-bottom%3A%201px%20solid%20lightgray%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%20.dialog-handler%20%7B%0A%20%20background%3A%20lightgray%3B%0A%20%20cursor%3A%20move%3B%0A%7D%0A%0A%23wysiwyg-editor-wrapper%20%23image_link_dialog%20.dialog-handler%20a%20%7B%0A%20%20background%3A%20lightgray%3B%0A%20%20cursor%3A%20pointer%3B%0A%20%20text-decoration%3A%20none%3B%0A%20%20color%3A%20black%3B%0A%20%20margin-left%3A%205px%3B%0A%7D%3C/style%3E%0A%3Cstyle%3E%0A@import%20url%28%22https%3A//fonts.googleapis.com/css%3Ffamily%3DLato%3A300%2C400%2C700%2C900%22%29%3B%0A@import%20url%28https%3A//fonts.googleapis.com/css%3Ffamily%3DPacifico%29%3B%0Abody%20%7B%0A%20%20font-family%3A%20%22Lato%22%2C%20Helvetica%2C%20Arial%3B%0A%20%20font-size%3A%2016px%3B%0A%7D%0A%0A.text-center%20%7B%0A%20%20text-align%3A%20center%3B%0A%7D%0A%0A*%2C%20*%3Abefore%2C%20*%3Aafter%20%7B%0A%20%20-webkit-border-sizing%3A%20border-box%3B%0A%20%20-moz-border-sizing%3A%20border-box%3B%0A%20%20border-sizing%3A%20border-box%3B%0A%7D%0A%0A.container%20%7B%0A%20%20width%3A%20350px%3B%0A%20%20margin%3A%2050px%20auto%3B%0A%7D%0A.container%20%3E%20ul%20%7B%0A%20%20list-style%3A%20none%3B%0A%20%20padding%3A%200%3B%0A%20%20margin%3A%200%200%2020px%200%3B%0A%7D%0A%0A.title%20%7B%0A%20%20font-family%3A%20%27Pacifico%27%3B%0A%20%20font-weight%3A%20norma%3B%0A%20%20font-size%3A%2040px%3B%0A%20%20text-align%3A%20center%3B%0A%20%20line-height%3A%201.4%3B%0A%20%20color%3A%20%232980B9%3B%0A%7D%0A%0A.dropdown%20a%20%7B%0A%20%20text-decoration%3A%20none%3B%0A%7D%0A.dropdown%20%5Bdata-toggle%3D%22dropdown%22%5D%20%7B%0A%20%20position%3A%20relative%3B%0A%20%20display%3A%20block%3B%0A%20%20color%3A%20white%3B%0A%20%20background%3A%20%232980B9%3B%0A%20%20-moz-box-shadow%3A%200%201px%200%20%23409ad5%20inset%2C%200%20-1px%200%20%2320638f%20inset%3B%0A%20%20-webkit-box-shadow%3A%200%201px%200%20%23409ad5%20inset%2C%200%20-1px%200%20%2320638f%20inset%3B%0A%20%20box-shadow%3A%200%201px%200%20%23409ad5%20inset%2C%200%20-1px%200%20%2320638f%20inset%3B%0A%20%20text-shadow%3A%200%20-1px%200%20rgba%280%2C%200%2C%200%2C%200.3%29%3B%0A%20%20padding%3A%2010px%3B%0A%7D%0A.dropdown%20%5Bdata-toggle%3D%22dropdown%22%5D%3Ahover%20%7B%0A%20%20background%3A%20%232c89c6%3B%0A%7D%0A.dropdown%20.icon-arrow%20%7B%0A%20%20position%3A%20absolute%3B%0A%20%20display%3A%20block%3B%0A%20%20font-size%3A%200.7em%3B%0A%20%20color%3A%20%23fff%3B%0A%20%20top%3A%2014px%3B%0A%20%20right%3A%2010px%3B%0A%7D%0A.dropdown%20.icon-arrow.open%20%7B%0A%20%20-moz-transform%3A%20rotate%28-180deg%29%3B%0A%20%20-ms-transform%3A%20rotate%28-180deg%29%3B%0A%20%20-webkit-transform%3A%20rotate%28-180deg%29%3B%0A%20%20transform%3A%20rotate%28-180deg%29%3B%0A%20%20-moz-transition%3A%20-moz-transform%200.6s%3B%0A%20%20-o-transition%3A%20-o-transform%200.6s%3B%0A%20%20-webkit-transition%3A%20-webkit-transform%200.6s%3B%0A%20%20transition%3A%20transform%200.6s%3B%0A%7D%0A.dropdown%20.icon-arrow.close%20%7B%0A%20%20-moz-transform%3A%20rotate%280deg%29%3B%0A%20%20-ms-transform%3A%20rotate%280deg%29%3B%0A%20%20-webkit-transform%3A%20rotate%280deg%29%3B%0A%20%20transform%3A%20rotate%280deg%29%3B%0A%20%20-moz-transition%3A%20-moz-transform%200.6s%3B%0A%20%20-o-transition%3A%20-o-transform%200.6s%3B%0A%20%20-webkit-transition%3A%20-webkit-transform%200.6s%3B%0A%20%20transition%3A%20transform%200.6s%3B%0A%7D%0A.dropdown%20.icon-arrow%3Abefore%20%7B%0A%20%20content%3A%20%27%5C25BC%27%3B%0A%7D%0A.dropdown%20.dropdown-menu%20%7B%0A%20%20max-height%3A%200%3B%0A%20%20overflow%3A%20hidden%3B%0A%20%20list-style%3A%20none%3B%0A%20%20padding%3A%200%3B%0A%20%20margin%3A%200%3B%0A%7D%0A.dropdown%20.dropdown-menu%20li%20%7B%0A%20%20padding%3A%200%3B%0A%7D%0A.dropdown%20.dropdown-menu%20li%20a%20%7B%0A%20%20display%3A%20block%3B%0A%20%20color%3A%20%236f6f6f%3B%0A%20%20background%3A%20%23EEE%3B%0A%20%20-moz-box-shadow%3A%200%201px%200%20white%20inset%2C%200%20-1px%200%20%23d5d5d5%20inset%3B%0A%20%20-webkit-box-shadow%3A%200%201px%200%20white%20inset%2C%200%20-1px%200%20%23d5d5d5%20inset%3B%0A%20%20box-shadow%3A%200%201px%200%20white%20inset%2C%200%20-1px%200%20%23d5d5d5%20inset%3B%0A%20%20text-shadow%3A%200%20-1px%200%20rgba%28255%2C%20255%2C%20255%2C%200.3%29%3B%0A%20%20padding%3A%2010px%2010px%3B%0A%7D%0A.dropdown%20.dropdown-menu%20li%20a%3Ahover%20%7B%0A%20%20background%3A%20%23f6f6f6%3B%0A%7D%0A.dropdown%20.show%2C%20.dropdown%20.hide%20%7B%0A%20%20-moz-transform-origin%3A%2050%25%200%25%3B%0A%20%20-ms-transform-origin%3A%2050%25%200%25%3B%0A%20%20-webkit-transform-origin%3A%2050%25%200%25%3B%0A%20%20transform-origin%3A%2050%25%200%25%3B%0A%7D%0A.dropdown%20.show%20%7B%0A%20%20display%3A%20block%3B%0A%20%20max-height%3A%209999px%3B%0A%20%20-moz-transform%3A%20scaleY%281%29%3B%0A%20%20-ms-transform%3A%20scaleY%281%29%3B%0A%20%20-webkit-transform%3A%20scaleY%281%29%3B%0A%20%20transform%3A%20scaleY%281%29%3B%0A%20%20animation%3A%20showAnimation%200.5s%20ease-in-out%3B%0A%20%20-moz-animation%3A%20showAnimation%200.5s%20ease-in-out%3B%0A%20%20-webkit-animation%3A%20showAnimation%200.5s%20ease-in-out%3B%0A%20%20-moz-transition%3A%20max-height%201s%20ease-in-out%3B%0A%20%20-o-transition%3A%20max-height%201s%20ease-in-out%3B%0A%20%20-webkit-transition%3A%20max-height%201s%20ease-in-out%3B%0A%20%20transition%3A%20max-height%201s%20ease-in-out%3B%0A%7D%0A.dropdown%20.hide%20%7B%0A%20%20max-height%3A%200%3B%0A%20%20-moz-transform%3A%20scaleY%280%29%3B%0A%20%20-ms-transform%3A%20scaleY%280%29%3B%0A%20%20-webkit-transform%3A%20scaleY%280%29%3B%0A%20%20transform%3A%20scaleY%280%29%3B%0A%20%20animation%3A%20hideAnimation%200.4s%20ease-out%3B%0A%20%20-moz-animation%3A%20hideAnimation%200.4s%20ease-out%3B%0A%20%20-webkit-animation%3A%20hideAnimation%200.4s%20ease-out%3B%0A%20%20-moz-transition%3A%20max-height%200.6s%20ease-out%3B%0A%20%20-o-transition%3A%20max-height%200.6s%20ease-out%3B%0A%20%20-webkit-transition%3A%20max-height%200.6s%20ease-out%3B%0A%20%20transition%3A%20max-height%200.6s%20ease-out%3B%0A%7D%0A%0A@keyframes%20showAnimation%20%7B%0A%20%200%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.1%29%3B%0A%20%20%7D%0A%20%2040%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.04%29%3B%0A%20%20%7D%0A%20%2060%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.04%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.02%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20transform%3A%20scaleY%281%29%3B%0A%20%20%7D%0A%7D%0A@-moz-keyframes%20showAnimation%20%7B%0A%20%200%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.1%29%3B%0A%20%20%7D%0A%20%2040%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.04%29%3B%0A%20%20%7D%0A%20%2060%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.04%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.02%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20transform%3A%20scaleY%281%29%3B%0A%20%20%7D%0A%7D%0A@-webkit-keyframes%20showAnimation%20%7B%0A%20%200%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.1%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.1%29%3B%0A%20%20%7D%0A%20%2040%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.04%29%3B%0A%20%20%7D%0A%20%2060%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.04%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.04%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.02%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20transform%3A%20scaleY%281%29%3B%0A%20%20%7D%0A%7D%0A@keyframes%20hideAnimation%20%7B%0A%20%200%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20transform%3A%20scaleY%281%29%3B%0A%20%20%7D%0A%20%2060%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.02%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20transform%3A%20scaleY%280%29%3B%0A%20%20%7D%0A%7D%0A@-moz-keyframes%20hideAnimation%20%7B%0A%20%200%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20transform%3A%20scaleY%281%29%3B%0A%20%20%7D%0A%20%2060%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.02%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20transform%3A%20scaleY%280%29%3B%0A%20%20%7D%0A%7D%0A@-webkit-keyframes%20hideAnimation%20%7B%0A%20%200%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281%29%3B%0A%20%20%20%20transform%3A%20scaleY%281%29%3B%0A%20%20%7D%0A%20%2060%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280.98%29%3B%0A%20%20%20%20transform%3A%20scaleY%280.98%29%3B%0A%20%20%7D%0A%20%2080%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%281.02%29%3B%0A%20%20%20%20transform%3A%20scaleY%281.02%29%3B%0A%20%20%7D%0A%20%20100%25%20%7B%0A%20%20%20%20-moz-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20-ms-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20-webkit-transform%3A%20scaleY%280%29%3B%0A%20%20%20%20transform%3A%20scaleY%280%29%3B%0A%20%20%7D%0A%7D%0A%3C/style%3E%0A%0A%20%20%3Cscript%3E%0A%20%20window.console%20%3D%20window.console%20%7C%7C%20function%28t%29%20%7B%7D%3B%0A%3C/script%3E%0A%3Ctitle%3EEditando%20capa%20de%20livro%3C/title%3E%0A%3Cbase%20target%3D%22I1%22%3E%0A%3C/head%3E%3Cbody%20bgcolor%3D%22%23666699%22%3E%0A%3Cdiv%20align%3D%22center%22%3E%0A%20%20%3Ccenter%3E%0A%20%20%3Ctable%20border%3D%221%22%20cellpadding%3D%220%22%20cellspacing%3D%220%22%20style%3D%22border-color%3A%23808080%3B%20border-collapse%3A%20collapse%3B%20padding-left%3A4%3B%20padding-right%3A4%3B%20padding-top%3A1%3B%20padding-bottom%3A1%22%20bordercolor%3D%22%23111111%22%20width%3D%22707%22%20height%3D%22750%22%3E%0A%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%3Ctd%20width%3D%22703%22%20height%3D750%22%20align%3D%22center%22%20style%3D%22border-style%3Adotted%3B%20border-width%3A1%3B%20padding-left%3A1%3B%20padding-right%3A1%22%3E%0A%20%20%20%20%20%20%0A%20%3Cdiv%20id%3D%22content%22%20contenteditable%3D%22true%22%20style%3D%22width%3A%20710px%3B%20height%3A%2080px%22%3E%0A%20%20%20%20%0A%0A%20%3Cdiv%20style%3D%22position%3A%20absolute%3B%20width%3A%20710px%3B%20height%3A%201020px%3B%20z-index%3A%201%22%20id%3D%22camada1%22%3E%0A%3Ciframe%20name%3D%22I3%22%20width%3D%22710%22%20height%3D%221020%22%20scrolling%3D%22no%22%20align%3D%22top%22%20border%3D%220%22%20frameborder%3D%220%22%3E%0A%09%09%3C/iframe%3E%3C/div%3E%0A%3Cbr%3E%3Cbr%3E%3Cbr%3E%0A%20%20%20%20%3Cdiv%20style%3D%22position%3A%20absolute%3B%20width%3A%20700px%3B%20height%3A%20100px%3B%20z-index%3A%203%22%20id%3D%22camada2%22%3E%20%3Cp%20align%3D%22center%22%3E%0A%09%3Cfont%20color%3D%22%23AF7B2F%22%20face%3D%22Viner%20Hand%20ITC%22%20size%3D%227%22%3E%3Cstrong%3E%0A%09%09Nome%20do%20escritor%3C/strong%3E%3C/font%3E%3Cp%20align%3D%22center%22%3E%0A%09%3Cimg%20src%3D%22https%3A//raw.githubusercontent.com/EditoraFacil/SeuLivro/gh-pages/images/Titulo%20do%20livro.png%22%20%20style%3D%22cursor%3A%20move%3B%22%20width%3D%22434%22%20height%3D%2278%22%3E%3Cp%20align%3D%22center%22%3E%0A%09%26nbsp%3B%3Cp%20align%3D%22center%22%3E%3Cb%3E%0A%09%3Cfont%20size%3D%226%22%20color%3D%22%23AF7B2F%22%3ESubt%EDtulo%3C/font%3E%3C/b%3E%3Cp%20align%3D%22center%22%3E%0A%3C/div%3E%0A%0A%0A%20%0A%09%0A%09%3Cbr%3E%0A%20%20%20%3Cbr%3E%0A%20%20%20%3Cbr%3E%09%3Cbr%3E%0A%20%20%20%3Cbr%3E%0A%20%20%20%3Cbr%3E%09%3Cbr%3E%0A%20%20%20%3Cbr%3E%0A%20%20%20%3Cbr%3E%09%3Cbr%3E%0A%20%20%20%09%09%0A%3Cdiv%20id%3D%22content%22%20contenteditable%3D%22true%22%20style%3D%22width%3A%20679px%3B%20height%3A%20252px%22%3E%0A%20%20%20%20%0A%20%20%0A%09%0A%09%20%20%20%20%20%20%20%3Ciframe%20src%3D%22https%3A//editorafacil.github.io/SeuLivro/images/93.png%22%20width%3D%22600%22%20height%3D%22500%22%20name%3D%22I1%22%20border%3D%220%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%20align%3D%22middle%22%3E%3C/iframe%3E%3C/h1%3E%3Cp%20align%3D%22center%22%3E%0A%09%26nbsp%3B%3Cp%20align%3D%22center%22%3E%0A%0A%09%0A%09%3C/div%3E%0A%09%09%3Cp%3E%0A%20%20%20%20%20%20%20%3C/div%3E%0A%20%20%20%20%20%20%20%3Cbr%3E%26nbsp%3B%3C/p%3E%0A%09%3Cdiv%20align%3D%22center%22%3E%0A%20%20%20%20%20%20%20%20%20%3Ccenter%3E%0A%20%20%20%20%20%20%20%20%20%3Cp%3E%26nbsp%3B%3C/p%3E%0A%09%09%09%3Ctable%20border%3D%220%22%20cellpadding%3D%220%22%20style%3D%22border-collapse%3A%20collapse%22%20bordercolor%3D%22%23111111%22%20width%3D%22580%22%20height%3D%22635%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%3Ctr%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ctd%20width%3D%22100%25%22%20height%3D%22650%22%20align%3D%22center%22%20valign%3D%22top%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cp%20align%3D%22center%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22content%22%20contenteditable%3D%22true%22%20style%3D%22width%3A%20692px%3B%20height%3A%20737px%22%3E%0A%20%20%20%20%0A%20%20%20%20%20%20%20%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Ch1%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3Cp%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3C/p%3E%0A%09%09%3Cp%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3C/p%3E%0A%09%09%3Cp%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3C/p%3E%0A%09%09%3Cp%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3C/p%3E%0A%09%09%3Cp%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3C/p%3E%0A%09%09%3Cp%20align%3D%22center%22%3E%0A%09%09%26nbsp%3B%3C/p%3E%0A%09%09%0A%09%09%3Ciframe%20name%3D%22I2%22%20width%3D%22621%22%20height%3D%22100%22%20border%3D%220%22%20frameborder%3D%220%22%20scrolling%3D%22no%22%3E%0A%09%09%09%09%3C/iframe%3E%3C/div%3E%0A%3C/td%3E%0A%20%20%20%20%20%20%20%20%20%20%20%3C/tr%3E%0A%20%20%20%20%20%20%20%20%20%3C/table%3E%0A%20%20%20%20%20%20%20%20%20%3C/center%3E%0A%3C/div%3E%0A%3Cbr%3E%3Cbr%3E%3Cbr%3E%3Cbr%3E%3Cbr%3E%3Cbr%3E%0A%09%09%3Cbutton%20type%3D%22button%22%20onclick%3D%22Mudarestado%28%27minhaDiv%27%29%22%3EMostrar%20/%20%0A%09%09Esconder%3C/button%3E%3Cdiv%20id%3D%22minhaDiv%22%3E%0A%09%09%0A%09%09%0A%09%09%3Chr%20color%3D%22%23FFFF00%22%20size%3D%224%22%3E%0A%3Cp%3E%26nbsp%3B%3C/p%3E%0A%09%3Cp%20align%3D%22left%22%3E%26nbsp%3B%3C/p%3E%3Cfont%20size%3D%225%22%3EEditar%20a%20capa%20abaixo%3C/font%3E%3Cp%20align%3D%22left%22%3E%0A%09%09%26nbsp%3B%3C/p%3E%0A%09%3Cp%3EFontes%20para%20trocar%20os%20nomes%3A%20%3Cb%3E%3Cfont%20size%3D%225%22%3E%0A%09%3Ca%20title%3D%22Ideal%20para%20o%20nome%20do%20escritor%20e%20subt%EDtulo%22%20target%3D%22I4%22%20href%3D%22https%3A//www.fontspace.com/new/fonts%22%3E%0A%09OP%C7%C3O%201%3C/a%3E%20-%0A%09%3Ca%20title%3D%22Ideal%20para%20o%20t%EDtulo%22%20target%3D%22I4%22%20href%3D%22https%3A//pt.cooltext.com/%22%3E%0A%09OP%C7%C3O%202%3C/a%3E%3C/font%3E%3C/b%3E%3C/p%3E%0A%09%09%26nbsp%3B%3Cp%3E%3Cfont%20size%3D%225%22%3EMudan%E7as%20automaticas%3C/font%3E%3C/p%3E%0A%09%09%3Cp%3E%26nbsp%3B%3C/p%3E%0A%09%09%3Cp%3E%3Cb%3ECor%20da%20Capa%3C/b%3E%3C/p%3E%20%3Cp%3E%0A%20%20%20%20%0A%20%20%20%20%3CSELECT%20%0Aonchange%3Ddocument.bgColor%3Dthis.options%5Bthis.selectedIndex%5D.value%20size%3D3%20%0Aname%3Dcores%3E%0A%09%09%09%09%3COPTION%20value%3Dorange%20selected%3ELaranja%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Dchocolate%3EChocolate%0A%09%09%09%09%3COPTION%20value%3Ddarkred%3EVermelho%20escuro%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Dgold%3EDourado%201%0A%09%09%09%09%3COPTION%20value%3Dvermelho%3EDourado%202%0A%09%09%09%09%3COPTION%20%0A%20%20value%3D%23dbdb7b%3EDourado%203%0A%09%09%09%09%3COPTION%20value%3Ddarkgoldenrod%3EDourado%20escuro%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Dsilver%3EPrateado%0A%09%09%09%09%3COPTION%20value%3Dbuey%3EVerde%201%0A%09%09%09%09%3COPTION%20value%3Drubi%3EVerde%202%0A%09%09%09%09%3COPTION%20value%3Dlime%3EVerde%203%0A%09%09%09%09%3COPTION%20value%3Dspringgreen%3EVerde%204%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Dhotpink%3ERosa%20choque%0A%09%09%09%09%3COPTION%20value%3Ddeeppink%3ERosa%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Ddarkkhaki%3EBege%0A%09%09%09%09%3COPTION%20value%3D%22cadetblue%20%22%3ERoxo%201%0A%09%09%09%09%3COPTION%20value%3Dapple%3ERoxo%202%0A%09%09%09%09%3COPTION%20value%3Dpurple%3ERoxo%203%0A%09%09%09%09%3COPTION%20value%3Ddarkslateblue%3EAzul%20escuro%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Daquamarine%3EAzul%20marinho%0A%09%09%09%09%3COPTION%20value%3Dturquoise%3EAzul%20turquesa%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Dpotatoe%3EAzul%20claro%0A%09%09%09%09%3COPTION%20value%3D%23135790%3EAzul%20esverdeado%0A%09%09%09%09%3COPTION%20%0A%20%20value%3Dtomato%3ETomate%0A%09%09%09%09%3COPTION%20value%3D%22%23964b00%22%3EMarron%3C/option%3E%0A%09%09%09%09%3Coption%20value%3D%22black%22%3EPreto%3C/option%3E%0A%09%09%09%09%3COPTION%20value%3D%22white%22%3EBranco%3C/OPTION%3E%0A%09%09%09%09%3C/SELECT%3E%26nbsp%3B%26nbsp%3B%3Cp%3E%0A%20%20%20%20%0A%20%20%20%20%26nbsp%3B%3Cp%3E%0A%20%20%20%20%0A%20%20%20%20Mudar%20Imagens%3Ctable%20border%3D%221%22%20width%3D%2259%25%22%3E%0A%09%09%09%3Ctr%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Ca%20target%3D%22I4%22%20href%3D%22http%3A//capa.arquivocristao.com.br/imagemcentro.htm%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3ECentro%3C/font%3E%3C/a%3E%3C/td%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Ca%20href%3D%22https%3A//editorafacil.github.io/SeuLivro/images/121.png%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3EExcluir%3C/font%3E%3C/a%3E%3C/td%3E%0A%09%09%09%3C/tr%3E%0A%09%09%09%3Ctr%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Ca%20target%3D%22I4%22%20href%3D%22http%3A//capa.arquivocristao.com.br/imagemtopo.htm%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3ETopo%3C/font%3E%3C/a%3E%3C/td%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Ca%20target%3D%22I3%22%20href%3D%22https%3A//editorafacil.github.io/SeuLivro/images/121.png%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3EExcluir%3C/font%3E%3C/a%3E%3C/td%3E%0A%09%09%09%3C/tr%3E%0A%09%09%09%3Ctr%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Ca%20target%3D%22I4%22%20href%3D%22http%3A//capa.arquivocristao.com.br/imagemrodape.htm%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3ERoda-p%E9%3C/font%3E%3C/a%3E%3C/td%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Ca%20target%3D%22I2%22%20href%3D%22https%3A//editorafacil.github.io/SeuLivro/images/121.png%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3EExcluir%3C/font%3E%3C/a%3E%3C/td%3E%0A%09%09%09%3C/tr%3E%0A%09%09%09%3Ctr%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3E%0A%09%09%09%09%3Ca%20target%3D%22I4%22%20href%3D%22http%3A//capa.arquivocristao.com.br/imagens_maiores.htm%22%3E%0A%09%09%09%09Completa%3C/a%3E%3C/font%3E%3C/td%3E%0A%09%09%09%09%3Ctd%20align%3D%22center%22%3E%0A%09%09%09%09%3Ca%20target%3D%22I3%22%20href%3D%22https%3A//editorafacil.github.io/SeuLivro/images/121.png%22%3E%0A%09%09%09%09%3Cfont%20size%3D%225%22%3EExcluir%3C/font%3E%3C/a%3E%3C/td%3E%0A%09%09%09%3C/tr%3E%0A%09%09%3C/table%3E%0A%09%09%0A%09%09%3Cp%3E%0A%20%20%20%20%0A%20%20%20%20%26nbsp%3B%3Ciframe%20name%3D%22I4%22%20width%3D%22709%22%20height%3D%221000%22%20src%3D%22http%3A//capa.arquivocristao.com.br/inicio_gerador.htm%22%20target%3D%22I1%22%20border%3D%220%22%20frameborder%3D%220%22%3E%3C/iframe%3E%0A%09%26nbsp%3B%3Cscript%20type%3D%22text/javascript%22%3E%0A%20%20%20%20%20%20%20%20function%20Mudarestado%28el%29%20%7B%0A%20%20%20%20%20%20%20%20var%20display%20%3D%20document.getElementById%28el%29.style.display%3B%0A%20%20%20%20%20%20%20%20if%28display%20%3D%3D%20%22none%22%29%0A%20%20%20%20%20%20%20%20%20%20%20%20document.getElementById%28el%29.style.display%20%3D%20%27block%27%3B%0A%20%20%20%20%20%20%20%20else%0A%20%20%20%20%20%20%20%20%20%20%20%20document.getElementById%28el%29.style.display%20%3D%20%27none%27%3B%0A%20%20%20%20%7D%0A%20%20%20%20%3C/script%3E%0A%3C/body%3E%0A%3C/html%3E"));
-//-->
+<!DOCTYPE html>
+
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./editandp capa_files/events_runner-21174b4c7273cfddc124acb0876792e0.js.download"></script><script src="./editandp capa_files/css_live_reload_init-7618a0de08795409d8f6c9ef6805f7b2.js.download"></script><meta name="robots" content="noindex">
+ <link href='https://raw.githubusercontent.com/PortalUnidecristo/Editora/gh-pages/image.ico' rel='icon' type='image/png'>
+<link href='https://raw.githubusercontent.com/PortalUnidecristo/Editora/gh-pages/image.ico' rel='shortcut icon' type='image/png'>
+
+<style class="cp-pen-styles">@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.clear_both {
+  display: block;
+  clear: both;
+}
+
+
+/START image dialog/
+
+.ui-wrapper {
+  display: inline-block;
+}
+
+#content img {
+  display: inline-block !important;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image {
+  font-size: 12pt;
+  background: white;
+  box-shadow: 1px 1px 3px 1px gray;
+  width: 300px;
+  padding: 10px;
+  display: none;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info,
+.dialog-handler {
+  padding: 5px;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info {
+  padding: 20px 10px;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info label {
+  float: left;
+  width: 15%;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image #info input {
+  color: gray;
+  width: 85%;
+  float: right;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler {
+  background: #e1e1e1;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler p {
+  float: right;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler p a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: black;
+}
+
+#wysiwyg-editor-wrapper .wysiwyg-editor-dialog-image .dialog-handler p a:hover {
+  text-decoration: underline;
+}
+/image edit as link dialog box/
+
+#wysiwyg-editor-wrapper #image_link_dialog {
+  background: white;
+  padding: 5px;
+  position: absolute;
+  box-shadow: 1px 1px 4px 0px gray;
+  display: none;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog div {
+  padding: 5px;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog #label {
+  float: left;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog #input {
+  float: right;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog label,
+input {
+  display: block;
+  font-size: 12pt;
+  margin-bottom: 5px;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog
+input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog .dialog-handler {
+  background: lightgray;
+  cursor: move;
+}
+
+#wysiwyg-editor-wrapper #image_link_dialog .dialog-handler a {
+  background: lightgray;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+}</style>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+body {
+  font-family: "Lato", Helvetica, Arial;
+  font-size: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+*, *:before, *:after {
+  -webkit-border-sizing: border-box;
+  -moz-border-sizing: border-box;
+  border-sizing: border-box;
+}
+
+.container {
+  width: 350px;
+  margin: 50px auto;
+}
+.container > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.title {
+  font-family: 'Pacifico';
+  font-weight: norma;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.4;
+  color: #2980B9;
+}
+
+.dropdown a {
+  text-decoration: none;
+}
+.dropdown [data-toggle="dropdown"] {
+  position: relative;
+  display: block;
+  color: white;
+  background: #2980B9;
+  -moz-box-shadow: 0 1px 0 #409ad5 inset, 0 -1px 0 #20638f inset;
+  -webkit-box-shadow: 0 1px 0 #409ad5 inset, 0 -1px 0 #20638f inset;
+  box-shadow: 0 1px 0 #409ad5 inset, 0 -1px 0 #20638f inset;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  padding: 10px;
+}
+.dropdown [data-toggle="dropdown"]:hover {
+  background: #2c89c6;
+}
+.dropdown .icon-arrow {
+  position: absolute;
+  display: block;
+  font-size: 0.7em;
+  color: #fff;
+  top: 14px;
+  right: 10px;
+}
+.dropdown .icon-arrow.open {
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  -moz-transition: -moz-transform 0.6s;
+  -o-transition: -o-transform 0.6s;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+}
+.dropdown .icon-arrow.close {
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -moz-transition: -moz-transform 0.6s;
+  -o-transition: -o-transform 0.6s;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: transform 0.6s;
+}
+.dropdown .icon-arrow:before {
+  content: '\25BC';
+}
+.dropdown .dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.dropdown .dropdown-menu li {
+  padding: 0;
+}
+.dropdown .dropdown-menu li a {
+  display: block;
+  color: #6f6f6f;
+  background: #EEE;
+  -moz-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
+  -webkit-box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
+  box-shadow: 0 1px 0 white inset, 0 -1px 0 #d5d5d5 inset;
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3);
+  padding: 10px 10px;
+}
+.dropdown .dropdown-menu li a:hover {
+  background: #f6f6f6;
+}
+.dropdown .show, .dropdown .hide {
+  -moz-transform-origin: 50% 0%;
+  -ms-transform-origin: 50% 0%;
+  -webkit-transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
+}
+.dropdown .show {
+  display: block;
+  max-height: 9999px;
+  -moz-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  animation: showAnimation 0.5s ease-in-out;
+  -moz-animation: showAnimation 0.5s ease-in-out;
+  -webkit-animation: showAnimation 0.5s ease-in-out;
+  -moz-transition: max-height 1s ease-in-out;
+  -o-transition: max-height 1s ease-in-out;
+  -webkit-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
+}
+.dropdown .hide {
+  max-height: 0;
+  -moz-transform: scaleY(0);
+  -ms-transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  animation: hideAnimation 0.4s ease-out;
+  -moz-animation: hideAnimation 0.4s ease-out;
+  -webkit-animation: hideAnimation 0.4s ease-out;
+  -moz-transition: max-height 0.6s ease-out;
+  -o-transition: max-height 0.6s ease-out;
+  -webkit-transition: max-height 0.6s ease-out;
+  transition: max-height 0.6s ease-out;
+}
+
+@keyframes showAnimation {
+  0% {
+    -moz-transform: scaleY(0.1);
+    -ms-transform: scaleY(0.1);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+  }
+  40% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  100% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-moz-keyframes showAnimation {
+  0% {
+    -moz-transform: scaleY(0.1);
+    -ms-transform: scaleY(0.1);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+  }
+  40% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  100% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@-webkit-keyframes showAnimation {
+  0% {
+    -moz-transform: scaleY(0.1);
+    -ms-transform: scaleY(0.1);
+    -webkit-transform: scaleY(0.1);
+    transform: scaleY(0.1);
+  }
+  40% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.04);
+    -ms-transform: scaleY(1.04);
+    -webkit-transform: scaleY(1.04);
+    transform: scaleY(1.04);
+  }
+  100% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+@keyframes hideAnimation {
+  0% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+@-moz-keyframes hideAnimation {
+  0% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+@-webkit-keyframes hideAnimation {
+  0% {
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  60% {
+    -moz-transform: scaleY(0.98);
+    -ms-transform: scaleY(0.98);
+    -webkit-transform: scaleY(0.98);
+    transform: scaleY(0.98);
+  }
+  80% {
+    -moz-transform: scaleY(1.02);
+    -ms-transform: scaleY(1.02);
+    -webkit-transform: scaleY(1.02);
+    transform: scaleY(1.02);
+  }
+  100% {
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+</style>
+<style>
+@media print { 
+#noprint { display:none; }
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
 </script>
+<title>Editando capa de livro</title>
+<base target="I1">
+</head><body bgcolor="#666699">
+
+<div id="noprint">
+<a href="javascript:;" onclick="window.print();return false"><button type="button" class="btn btn-danger" title="SALVAR">SALVAR</button></a>
+</div>  
+
+
+<div align="center">
+  <center>
+  <table border="1" cellpadding="0" cellspacing="0" style="border-color:#808080; border-collapse: collapse; padding-left:4; padding-right:4; padding-top:1; padding-bottom:1" bordercolor="#111111" width="707" height="750">
+    <tr>
+      <td width="703" height=750" align="center" style="border-style:dotted; border-width:1; padding-left:1; padding-right:1">
+      
+ <div id="content" contenteditable="true" style="width: 710px; height: 80px">
+    
+
+ <div style="position: absolute; width: 710px; height: 1020px; z-index: 1" id="camada1">
+<iframe name="I3" width="710" height="1020" scrolling="no" align="top" border="0" frameborder="0">
+		</iframe></div>
+<br><br><br>
+    <div style="position: absolute; width: 700px; height: 100px; z-index: 3" id="camada2"> <p align="center">
+	<font color="#AF7B2F" face="Viner Hand ITC" size="7"><strong>
+		Nome do escritor</strong></font><p align="center">
+	<img src="https://raw.githubusercontent.com/EditoraFacil/SeuLivro/gh-pages/images/Titulo do livro.png"  style="cursor: move;" width="434" height="78"><p align="center">
+	&nbsp;<p align="center"><b>
+	<font size="6" color="#AF7B2F">Subtítulo</font></b><p align="center">
+</div>
+
+
+ 
+	
+	<br>
+   <br>
+   <br>	<br>
+   <br>
+   <br>	<br>
+   <br>
+   <br>	<br>
+   		
+<div id="content" contenteditable="true" style="width: 679px; height: 252px">
+    
+  
+	
+	       <iframe src="https://editorafacil.github.io/SeuLivro/images/93.png" width="600" height="500" name="I1" border="0" frameborder="0" scrolling="no" align="middle"></iframe></h1><p align="center">
+	&nbsp;<p align="center">
+
+	
+	</div>
+		<p>
+       </div>
+       <br>&nbsp;</p>
+	<div align="center">
+         <center>
+         <p>&nbsp;</p>
+			<table border="0" cellpadding="0" style="border-collapse: collapse" bordercolor="#111111" width="580" height="635">
+           <tr>
+             <td width="100%" height="650" align="center" valign="top">
+             <p align="center">
+             <div id="content" contenteditable="true" style="width: 692px; height: 737px">
+    
+       <h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<h1 align="center">
+		&nbsp;<p align="center">
+		&nbsp;</p>
+		<p align="center">
+		&nbsp;</p>
+		<p align="center">
+		&nbsp;</p>
+		<p align="center">
+		&nbsp;</p>
+		<p align="center">
+		&nbsp;</p>
+		<p align="center">
+		&nbsp;</p>
+		
+		<iframe name="I2" width="621" height="100" border="0" frameborder="0" scrolling="no">
+				</iframe></div>
+</td>
+           </tr>
+         </table>
+         </center>
+</div>
+<br><br><br><br><br><br>
+		<button type="button" onclick="Mudarestado('minhaDiv')">Mostrar / 
+		Esconder</button><div id="minhaDiv">
+		
+		
+		<hr color="#FFFF00" size="4">
+<p>&nbsp;</p>
+	<p align="left">&nbsp;</p><font size="5">Editar a capa abaixo</font><p align="left">
+		&nbsp;</p>
+	<p>Fontes para trocar os nomes: <b><font size="5">
+	<a title="Ideal para o nome do escritor e subtítulo" target="I4" href="https://www.fontspace.com/new/fonts">
+	OPÇÃO 1</a> -
+	<a title="Ideal para o título" target="I4" href="https://pt.cooltext.com/">
+	OPÇÃO 2</a></font></b></p>
+		&nbsp;<p><font size="5">Mudanças automaticas</font></p>
+		<p>&nbsp;</p>
+		<p><b>Cor da Capa</b></p> <p>
+    
+    <SELECT 
+onchange=document.bgColor=this.options[this.selectedIndex].value size=3 
+name=cores>
+				<OPTION value=orange selected>Laranja
+				<OPTION 
+  value=chocolate>Chocolate
+				<OPTION value=darkred>Vermelho escuro
+				<OPTION 
+  value=gold>Dourado 1
+				<OPTION value=vermelho>Dourado 2
+				<OPTION 
+  value=#dbdb7b>Dourado 3
+				<OPTION value=darkgoldenrod>Dourado escuro
+				<OPTION 
+  value=silver>Prateado
+				<OPTION value=buey>Verde 1
+				<OPTION value=rubi>Verde 2
+				<OPTION value=lime>Verde 3
+				<OPTION value=springgreen>Verde 4
+				<OPTION 
+  value=hotpink>Rosa choque
+				<OPTION value=deeppink>Rosa
+				<OPTION 
+  value=darkkhaki>Bege
+				<OPTION value="cadetblue ">Roxo 1
+				<OPTION value=apple>Roxo 2
+				<OPTION value=purple>Roxo 3
+				<OPTION value=darkslateblue>Azul escuro
+				<OPTION 
+  value=aquamarine>Azul marinho
+				<OPTION value=turquoise>Azul turquesa
+				<OPTION 
+  value=potatoe>Azul claro
+				<OPTION value=#135790>Azul esverdeado
+				<OPTION 
+  value=tomato>Tomate
+				<OPTION value="#964b00">Marron</option>
+				<option value="black">Preto</option>
+				<OPTION value="white">Branco</OPTION>
+				</SELECT>&nbsp;&nbsp;<p>
+    
+    &nbsp;<p>
+    
+    Mudar Imagens<table border="1" width="59%">
+			<tr>
+				<td align="center">
+				<a target="I4" href="http://capa.arquivocristao.com.br/imagemcentro.htm">
+				<font size="5">Centro</font></a></td>
+				<td align="center">
+				<a href="https://editorafacil.github.io/SeuLivro/images/121.png">
+				<font size="5">Excluir</font></a></td>
+			</tr>
+			<tr>
+				<td align="center">
+				<a target="I4" href="http://capa.arquivocristao.com.br/imagemtopo.htm">
+				<font size="5">Topo</font></a></td>
+				<td align="center">
+				<a target="I3" href="https://editorafacil.github.io/SeuLivro/images/121.png">
+				<font size="5">Excluir</font></a></td>
+			</tr>
+			<tr>
+				<td align="center">
+				<a target="I4" href="http://capa.arquivocristao.com.br/imagemrodape.htm">
+				<font size="5">Roda-pé</font></a></td>
+				<td align="center">
+				<a target="I2" href="https://editorafacil.github.io/SeuLivro/images/121.png">
+				<font size="5">Excluir</font></a></td>
+			</tr>
+			<tr>
+				<td align="center">
+				<font size="5">
+				<a target="I4" href="http://capa.arquivocristao.com.br/imagens_maiores.htm">
+				Completa</a></font></td>
+				<td align="center">
+				<a target="I3" href="https://editorafacil.github.io/SeuLivro/images/121.png">
+				<font size="5">Excluir</font></a></td>
+			</tr>
+		</table>
+		
+		<p>
+    
+    &nbsp;<iframe name="I4" width="709" height="1000" src="http://capa.arquivocristao.com.br/inicio_gerador.htm" target="I1" border="0" frameborder="0"></iframe>
+	&nbsp;<script type="text/javascript">
+        function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+        if(display == "none")
+            document.getElementById(el).style.display = 'block';
+        else
+            document.getElementById(el).style.display = 'none';
+    }
+    </script>
+</body>
+</html>

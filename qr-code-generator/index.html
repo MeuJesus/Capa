@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - QR Code Generator </title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!--  view in fullscreen for best look -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Codes</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="qrcode.css">
+    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+
+    <script src="qrcode.js"></script>
+</head>
+<body>
+    <div id ="border" class = "fadeInLeft">
+        <div id ="content">
+        <header>
+            <h1>Gerador de c&oacute;digo QR</h1>
+        </header>
+    
+        
+        <div class ="textbox">
+        <textarea id="QR_Input" name="QR_Input" type = "text" value = "1" rows = "1" cols= "33" placeholder="EDITORA UNIDECRISTO"></textarea>
+        </div>
+        <div class = "buttons">
+            <button id="submitButton" onclick="displayQrCodeInfo()" >Enviar</button>
+            <button id="startOverButton" style="background-color:#668fff" onclick="startOver()">Recome&ccedil;ar</button>
+        </div>
+        <div id = "outputBorder" style="width: 250px; height: 250px">
+        <span>
+            <div id="output" ></div>
+        </span> 
+        </div>       
+        <span id = "saveMessage">
+            
+        </span>
+
+    </div>
+</div>    
+  
+<script>
+
+        //Take text area information and output it on the page
+    
+    function displayQrCodeInfo() {
+        
+        let ibsCode = document.getElementById("QR_Input").value; //grab the value of the textbox input
+        let display = document.getElementById("output"); // grab the output div
+       
+        
+       
+
+       
+        // var partNumber = document.getElementById("part_number");
+        if(ibsCode !== ""){
+        
+            
+      // Using https://davidshimjs.github.io/qrcodejs/
+        let qrcode = new QRCode("output", {
+            text: ibsCode,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+            
+        });
+        }
+        
+        //if the value is not empty, it will display the message
+        if(ibsCode !== ""){
+        displayMessage();
+        disableBtn();
+        }
+}
+
+
+//disable the submit button after the button is pressed
+function disableBtn() {
+    document.getElementById("submitButton").disabled = true;
+}
+
+function startOver() {
+    //grab the text box of the QR_Input
+    let qrInput = document.getElementById("QR_Input");
+    //grab the QR Code Image
+    let qrCode = document.getElementById("output");
+    //create a new span when startOver button is pressed
+    let newdiv = document.createElement("SPAN");
+    //get newly created text from displayMessage function
+    let deleteText = document.getElementById("message");
+    
+    let span = document.querySelector("span");
+
+    //Give the new div an id of output and append it to the page
+    newdiv.setAttribute("id", "output");
+    span.appendChild(newdiv);
+
+
+    //set the text box to empty when start over is pressed and then remove the QRcode image and text
+    qrInput.value = '';
+    //Only if there is a message will it try to delete the message
+    if(deleteText){
+    deleteText.parentNode.removeChild(deleteText);
+    }
+    qrCode.parentNode.removeChild(qrCode);
+
+    //renable the the submit button
+    document.getElementById("submitButton").disabled = false;
+}
+
+function displayMessage(){
+    
+    let display = document.getElementById("output");
+    let message = document.createElement("p");
+    let span = document.getElementById('saveMessage');
+
+        
+        message.setAttribute("id", "message");
+        message.innerText = "Clique do lado direito do mouse para copiar a imagem!";
+        span.appendChild(message);
+      
+}
+
+        
+        
+    </script>
+<!-- partial -->
+  <script src='https://davidshimjs.github.io/qrcodejs'></script><script  src="./script.js"></script>
+
+</body>
+</html>

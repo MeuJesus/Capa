@@ -1,0 +1,107 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 25px;
+}
+
+.slide-content div {
+  padding: 8px 8px 8px 32px;
+  font-size: 12px;
+  color: #252525;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 17px;
+  transition: color 0.3s;
+}
+.slide-content div span {
+  font-size: 13px;
+  color: #0c77b9;
+  text-transform: lowercase;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+.Pdf2Image {
+  padding: 100px;
+  margin-top: 1px;
+  height: 1500px;
+}
+input[type="file"] {
+  cursor: pointer;
+  width: 180px;
+  height: 34px;
+  overflow: hidden;
+}
+input[type="file"]:before {
+  width: 158px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 32px;
+  content: "Pegar arquivo PDF";
+  display: inline-block;
+  background: white;
+  border: 1px solid #000;
+  padding: 0 10px;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  border-radius: 5px;
+}
+input[type="file"]:hover {
+  color: #00a546;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.file-container {
+  display: flex;
+  justify-content: center;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-gap: 1rem;
+  font-size: 14px;
+}
+.tech-div {
+  font-size: 14px;
+}
+.contentDiv {
+  width:800px;
+  margin: 0 auto;
+}

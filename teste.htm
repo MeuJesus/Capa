@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./editandp capa_files/events_runner-21174b4c7273cfddc124acb0876792e0.js.download"></script><script src="./editandp capa_files/css_live_reload_init-7618a0de08795409d8f6c9ef6805f7b2.js.download"></script><meta name="robots" content="noindex">
@@ -479,6 +480,10 @@ body {
   }
 }
 </style>
+<style>
+@media print { 
+#noprint { display:none; }
+</style>
 
   <script>
   window.console = window.console || function(t) {};
@@ -486,6 +491,13 @@ body {
 <title>Editando capa de livro</title>
 <base target="I1">
 </head><body bgcolor="#666699">
+
+<div id="noprint">
+<a href="javascript:;" onclick="window.print();return false"><button type="button" class="btn btn-danger" title="SALVAR">
+SALVAR</button></a>
+</div>  
+
+
 <div align="center">
   <center>
   <table border="1" cellpadding="0" cellspacing="0" style="border-color:#808080; border-collapse: collapse; padding-left:4; padding-right:4; padding-top:1; padding-bottom:1" bordercolor="#111111" width="707" height="750">
@@ -494,20 +506,20 @@ body {
       
  <div id="content" contenteditable="true" style="width: 710px; height: 80px">
     
-
+<center>
  <div style="position: absolute; width: 710px; height: 1020px; z-index: 1" id="camada1">
-<iframe name="I3" width="710" height="1020" scrolling="no" align="top" border="0" frameborder="0">
+<iframe name="I3" width="710" height="1020" scrolling="no" align="absmiddle" border="0" frameborder="0">
 		</iframe></div>
 <br><br><br>
     <div style="position: absolute; width: 700px; height: 100px; z-index: 3" id="camada2"> <p align="center">
 	<font color="#AF7B2F" face="Viner Hand ITC" size="7"><strong>
 		Nome do escritor</strong></font><p align="center">
-	<img src="https://raw.githubusercontent.com/EditoraFacil/SeuLivro/gh-pages/images/Titulo%20do%20livro.png"  style="cursor: move;" width="434" height="78"><p align="center">
+	<img src="https://raw.githubusercontent.com/EditoraFacil/SeuLivro/gh-pages/images/Titulo do livro.png"  style="cursor: move;" width="434" height="78"><p align="center">
 	&nbsp;<p align="center"><b>
 	<font size="6" color="#AF7B2F">Subtítulo</font></b><p align="center">
 </div>
 
-
+</center>
  
 	
 	<br>
@@ -579,7 +591,7 @@ body {
 <p>&nbsp;</p>
 	<p align="left">&nbsp;</p><font size="5">Editar a capa abaixo</font><p align="left">
 		&nbsp;</p>
-	<p>Fontes para trocar o nomes: <b><font size="5">
+	<p>Fontes para trocar os nomes: <b><font size="5">
 	<a title="Ideal para o nome do escritor e subtítulo" target="I4" href="https://www.fontspace.com/new/fonts">
 	OPÇÃO 1</a> -
 	<a title="Ideal para o título" target="I4" href="https://pt.cooltext.com/">
@@ -681,3 +693,4 @@ name=cores>
     </script>
 </body>
 </html>
+
